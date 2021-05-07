@@ -1,10 +1,15 @@
 require('dotenv').config()
+const axios = require('axios')
 const { createServer } = require('http')
-const pug = require('pug');
+const pug = require('pug')
 
 const PORT = process.env.PORT || 1234
 
-const data = { jobs: ['accountant', 'electrician', 'mechanic', 'teacher'] }
+const data = {}
+
+axios.get('http://api.dataatwork.org/v1/jobs').then(res => {
+  data.jobs = res.data;
+})
 
 const server = createServer((request,response) => {
 	return response.end(pug.renderFile('views/index.pug', data))

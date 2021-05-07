@@ -2,8 +2,12 @@ doctype html
 html
   head
     title Not Seek
+    style
+      include style.css
   body 
     h1 Latest Vacancies
-    ul
-      each job in jobs
-       li= job
+    div(class='TestJobs', (click)='test()')
+      ul
+        each job in jobs
+         li
+            button(onclick='gotoDeets(#{job.id}') #{job.title}
