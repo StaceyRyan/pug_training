@@ -14,7 +14,7 @@ axios.get('http://api.dataatwork.org/v1/jobs').then(res => {
 //event listener - waiting for the page to be loaded the first time
 const server = createServer((request,  response) => {
   console.log(request.url);
-  if (request.url === '/other.html') {
+  if (request.url === `/other.html`) {
     return (response.end(pug.renderFile('views/other.pug', data)))
   } else {
 	return response.end(pug.renderFile('views/index.pug', data));
