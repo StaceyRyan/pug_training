@@ -9,10 +9,16 @@ const data = {}
 
 axios.get('http://api.dataatwork.org/v1/jobs').then(res => {
   data.jobs = res.data;
-})
+}).catch((error) => console.log('API error', error))
 
-const server = createServer((request,response) => {
-	return response.end(pug.renderFile('views/index.pug', data))
+//event listener - waiting for the page to be loaded the first time
+const server = createServer((request,  response) => {
+  console.log(request.url);
+  if (request.url === '/other.html') {
+    return (response.end(pug.renderFile('views/other.pug', data)))
+  } else {
+	return response.end(pug.renderFile('views/index.pug', data));
+  }
 })
 
 server.listen(PORT, () => {
