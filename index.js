@@ -9,7 +9,7 @@ const data = {}
 
 const router = [
   {path: '/', template: 'views/index.pug'},
-  {path: '/', template: 'views/other/pug'}
+  {path: '/other.html', template: 'views/other.pug'}
 ]
 
 axios.get('http://api.dataatwork.org/v1/jobs').then(res => {
