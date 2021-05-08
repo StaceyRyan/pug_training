@@ -6,8 +6,8 @@ html
       include style.css
   body 
     h1 Latest Vacancies
-    div(class='TestJobs', (click)='test()')
+    div(class='TestJobs')
       ul
         each job in jobs
          li
-            button(onclick='gotoDeets(#{job.id}') #{job.title}
+            a(href='//google.com') #{job.title}
