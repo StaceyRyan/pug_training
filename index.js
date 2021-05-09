@@ -15,10 +15,15 @@ const showAll = (jobs, url) => {
   return {jobs: jobs}
 }
 const showJob = (jobs, url) => {
-  console.log(JSON.stringify(jobs))
+  // console.log(JSON.stringify(jobs))
   const jobDetail = jobs.find(job => job.uuid === url.query.id)
-  console.log(`showJob ${jobDetail.title}`)
-  return {job: jobDetail}
+  // console.log(`showJob ${jobDetail.title}`)
+  if (jobDetail) {
+    return {job: jobDetail} 
+  }
+  else return { 
+    job: {title: `Error - job ${url.query.id} not found`}
+  }
 }
 
 const router = [
