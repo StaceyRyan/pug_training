@@ -36,7 +36,7 @@ const router = [
 //Using a method instead of if statement because if more routes are added, this will be cleaner
 const server = createServer((request, response) => {
   const inboundURL = url.parse(request.url, {parseQueryString: true})
-  
+
   //Find a matching route for the inbound URL
   const templateFile = router.find(route => inboundURL.pathname === route.path)
   if (templateFile) {
