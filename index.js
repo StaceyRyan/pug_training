@@ -9,14 +9,22 @@ const PORT = process.env.PORT || 1234
 //Leave this outside so the server (thus pug flies) can access it
 const data = {}
 
+//Controller functions
+//mandatory argument goes first, optional later
+const showAll = (jobs, url) => {
+  return {jobs: jobs}
+}
+const showJob = (jobs, url) => {
+  console.log(JSON.stringify(jobs))
+  const jobDetail = jobs.find(job => job.uuid === url.query.id)
+  console.log(`showJob ${jobDetail.title}`)
+  return {job: jobDetail}
+}
+
 const router = [
   { path: '/', template: 'views/index.pug', controller: showAll },
   { path: '/other.html', template: 'views/other.pug', controller: showJob }
 ]
-
-const showAll = () => {
-return {/* object */}
-}
 
 //event listener - waiting for the page to be loaded the first time
 //This is a Node.js event listener
@@ -30,7 +38,8 @@ const server = createServer((request, response) => {
     //Get data from jobs API
     axios.get('http://api.dataatwork.org/v1/jobs').then(res => {
       data.jobs = res.data;
-      return (response.end(pug.renderFile(templateFile.template, data)))
+      return (response.end(pug.renderFile(templateFile.template, 
+        templateFile.controller(data.jobs, inboundURL))))
     }).catch((error) => console.log('API error', error))
   } else {
     return response.end(pug.renderFile('views/404.pug', data));
