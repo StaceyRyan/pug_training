@@ -6,8 +6,13 @@ html
       include style.css
   body 
     h1 Latest Vacancies
-    div(class='TestJobs')
+    h3 Page Number #{page}
+    div(class='test-jobs')
       ul
         each job in jobs
          li
             a(href=`/other.html?id=${job.uuid}`) #{job.title}
+      //- ul    
+      //-   each pageNum in pageNum.length ? pageNum : ['No jobs found']
+      //-     li= pageNum
+    a(href=`/?page=${page}`) Page
