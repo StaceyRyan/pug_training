@@ -13,14 +13,14 @@ const data = {}
 const showAll = (jobs, url) => {
   console.log('jobs', jobs.slice(0, 3))
   let pageNum = 0
-  if (!url.query.page) {
+  if (!url.query.pageNum) {
     pageNum = 1
   } else {
-    pageNum = url.searchParams.page
+    pageNum = url.searchParams.pageNum
   }
   let endIndex = pageNum * 3
   let startIndex = endIndex - 3
-  return { jobs: jobs.slice(startIndex, endIndex), page: url.searchParams.page }
+  return { jobs: jobs.slice(startIndex, endIndex), page: url.searchParams.pageNum }
 }
 const showJob = (jobs, url) => {
   // console.log(JSON.stringify(jobs))
