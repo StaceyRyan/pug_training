@@ -1,3 +1,8 @@
 .TestJobs {
     color: red
 }
+
+.pagination {
+    list-style: none;
+    display: inline-flex;
+}
