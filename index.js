@@ -11,17 +11,8 @@ const data = {}
 //Controller functions
 //mandatory argument goes first, optional later
 const showAll = (jobs, url) => {
-  if (jobs.length > 3) {
-    let pageNum = 0
-    if (!url.searchParams.page) {
-      pageNum = 1
-    } else {
-      pageNum = url.searchParam.page
-    }
-    let endIndex = pageNum * 3
-    let startIndex = endIndex - 3
-    return { jobs: jobs.slice(startIndex, endIndex), page: url.searchParams.page }
-  }
+  let page = url.searchParams.get('page')
+  return { jobs: jobs, page: page}
 }
 const showJob = (jobs, url) => {
   // console.log(JSON.stringify(jobs))

@@ -12,7 +12,4 @@ html
         each job in jobs
          li
             a(href=`/other.html?id=${job.uuid}`) #{job.title}
-      //- ul    
-      //-   each pageNum in pageNum.length ? pageNum : ['No jobs found']
-      //-     li= pageNum
-    //- a(href=`/nextPage.html?page=${page}`) Page
+    a(href=`/nextPage.html?id=${page}`) Page
