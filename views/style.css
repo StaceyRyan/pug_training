@@ -4,5 +4,5 @@
 
 .pagination {
     list-style: none;
-    display: inline-flex;
+    display: inline-block;
 }

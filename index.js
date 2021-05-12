@@ -11,7 +11,8 @@ const data = {}
 //Controller functions
 //mandatory argument goes first, optional later
 const showAll = (jobs, url) => {
-  let page = url.searchParams.get('page')
+  let page = parseInt(url.searchParams.get('page'))
+
   if (!page) page = 1
 
   let pageCount = Math.ceil(jobs.length / 10)
