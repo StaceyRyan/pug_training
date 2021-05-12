@@ -12,7 +12,14 @@ const data = {}
 //mandatory argument goes first, optional later
 const showAll = (jobs, url) => {
   let page = url.searchParams.get('page')
-  return { jobs: jobs, page: page}
+  if (!page) page = 1
+
+  let pageCount = Math.ceil(jobs.length / 10)
+
+  const endIndex = page * 10
+  const startIndex = endIndex - 10
+  const pagedJobs = jobs.slice(startIndex, endIndex)
+  return { jobs: pagedJobs, page: page, pageCount: pageCount}
 }
 const showJob = (jobs, url) => {
   // console.log(JSON.stringify(jobs))
