@@ -14,7 +14,10 @@ html
         each job in jobs
          li
             a(href=`/other.html?id=${job.uuid}`) #{job.title}
+    a(href=`/?page=${page - 1}`) Previous
       ul(class='pagination')
         while n < pageCount
           li
             a(href=`/?page=${n}`) #{n++}
+    a(href=`/?page=${page + 1}`) Next
+    
