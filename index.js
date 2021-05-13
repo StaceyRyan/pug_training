@@ -63,3 +63,5 @@ const server = createServer((request, response) => {
 server.listen(PORT, () => {
   console.log(`The web server is running on port ${PORT}`)
 })
+
+module.exports = {server}
