@@ -12,7 +12,7 @@ describe("API call to jobs", () => {
     nock('http://localhost:3000').reply(200, response)
   })
   it("should return status 200", async () => {
-    let res = await chai.request(apiCall).
+    let response = await chai.request(apiCall).
     // let serverTest = 
     expect(response.statusCode).to.deep.equal(200)
   })
