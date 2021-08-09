@@ -1,17 +1,19 @@
-const expect = require("chai").expect
+const expect = require('chai').expect
 const request = require('superagent')
-const apiCall = require("../index")
+const response = require('./response')
+const nock = require('nock')
+const apiCall = require('../index')
 
 
 //details that describe elements of the app
 //describe('test title', function)
 
 //Test Server
-describe("API call to jobs", () => {
+describe('API call to jobs', () => {
   beforeEach(() => {
     nock('http://localhost:3000').reply(200, response)
   })
-  it("should return status 200", async () => {
+  it('should return status 200', async () => {
     let response = await chai.request(apiCall).
     // let serverTest = 
     expect(response.statusCode).to.deep.equal(200)
